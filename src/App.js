@@ -17,11 +17,9 @@ function Copyright() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Copyright © '}
-      <Link color="inherit" href="https://material-ui.com/">
-        Ore No Site.com
+      <Link color="inherit" href="http://k-mit.jp/">
+        MIT inc. 2020
       </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
     </Typography>
   );
 }
@@ -31,7 +29,7 @@ const useStyles = makeStyles(theme => ({
     height: '100vh',
   },
   image: {
-    backgroundImage: 'url(./spiderman.gif)',
+    backgroundImage: 'url(./top.jpg)',
     backgroundRepeat: 'no-repeat',
     backgroundColor:
       theme.palette.type === 'dark' ? theme.palette.grey[900] : theme.palette.grey[50],
@@ -57,6 +55,18 @@ const useStyles = makeStyles(theme => ({
   },
 }));
 
+function handleFormSubmit(event) {
+  event.preventDefault();
+
+  // form値取得
+  const params = {
+    address: event.target[0].value,
+    password: event.target[2].value,
+  };
+
+  alert(JSON.stringify(params, null, '  '));
+}
+
 export default function SignInSide() {
   const classes = useStyles();
 
@@ -72,7 +82,7 @@ export default function SignInSide() {
           <Typography component="h1" variant="h5">
             書籍管理システム LogInページ
           </Typography>
-          <form className={classes.form} noValidate>
+          <form className={classes.form} noValidate onSubmit={handleFormSubmit}>
             <TextField
               variant="outlined"
               margin="normal"
@@ -95,10 +105,10 @@ export default function SignInSide() {
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
+            {/* <FormControlLabel
               control={<Checkbox value="remember" color="primary" />}
               label="Remember me"
-            />
+            /> */}
             <Button
               type="submit"
               fullWidth
@@ -109,16 +119,16 @@ export default function SignInSide() {
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
+              {/* <Grid item xs>
                 <Link href="#" variant="body2">
                   Forgot password?
                 </Link>
-              </Grid>
-              <Grid item>
+              </Grid> */}
+              {/* <Grid item>
                 <Link href="#" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
-              </Grid>
+              </Grid> */}
             </Grid>
             <Box mt={5}>
               <Copyright />
