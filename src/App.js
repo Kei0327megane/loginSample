@@ -10,6 +10,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import Typography from '@material-ui/core/Typography';
 import Copyright from './CopyRight';
 import UseStyles from './UseStyles';
+import Firebase from './Firebase';
 
 function handleFormSubmit(event) {
   event.preventDefault();
@@ -20,7 +21,17 @@ function handleFormSubmit(event) {
     password: event.target[2].value,
   };
 
-  alert(JSON.stringify(params, null, '  '));
+  Firebase.auth().signInWithEmailAndPassword(params.address, params.password)
+  .then(res => {
+    //正常終了時
+    alert("ログイン");
+    
+  })
+  .catch(error => {
+    //異常終了時
+    alert(error);
+  });
+
 }
 
 export default function SignInSide() {
