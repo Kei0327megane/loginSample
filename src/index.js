@@ -1,12 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
+import Login from './LoginAuth';
+import DashBoard from './DashBoard';
 import * as serviceWorker from './serviceWorker';
+import { BrowserRouter, Route } from 'react-router-dom';
+
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+      <BrowserRouter>
+        <div>
+          <Route path="/" exact component={Login} />
+          <Route path="/dashBoard"  component={DashBoard} />
+        </div>
+      </BrowserRouter>
   </React.StrictMode>,
   document.getElementById('root')
 );
